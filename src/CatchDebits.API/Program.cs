@@ -1,17 +1,33 @@
 using CatchDebits.API.Data;
+using CatchDebits.API.Services;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // ============================================================
-// BANCO DE DADOS: SQLite via Entity Framework Core
-// Lê a connection string do appsettings.json
+// BANCO DE DADOS
 // ============================================================
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // ============================================================
-// CORS: permite que o front-end React (porta 5173) acesse a API
+// INJEÇÃO DE DEPENDÊNCIA DOS SERVICES
+// AddScoped: uma instância por requisição HTTP
+// ============================================================
+builder.Services.AddScoped<IPessoaService, PessoaService>();
+builder.Services.AddScoped<ITransacaoService, TransacaoService>();
+
+// ============================================================
+// FLUENTVALIDATION
+// Registra automaticamente todos os Validators do projeto
+// ============================================================
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+
+// ============================================================
+// CORS: libera o front-end React (porta 5173)
 // ============================================================
 builder.Services.AddCors(options =>
 {
@@ -37,9 +53,7 @@ builder.Services.AddSwaggerGen(options =>
 var app = builder.Build();
 
 // ============================================================
-// INICIALIZAÇÃO DO BANCO DE DADOS
-// EnsureCreated(): cria o arquivo .db e as tabelas se não existirem.
-// Se o arquivo já existir, não faz nada (não perde dados).
+// INICIALIZAÇÃO DO BANCO
 // ============================================================
 using (var scope = app.Services.CreateScope())
 {
@@ -53,9 +67,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// CORS deve vir ANTES de MapControllers
 app.UseCors("AllowReactApp");
-
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
