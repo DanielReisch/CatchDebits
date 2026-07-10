@@ -204,9 +204,9 @@ Tabela: Transacoes
 
 ---
 
-## 🤖 Uso de Inteligência Artificial
+## Uso de Inteligência Artificial
 
-Este projeto foi desenvolvido com suporte estratégico de **IA generativa (Claude - Anthropic)** como ferramenta de produtividade profissional.
+Este projeto foi desenvolvido com suporte estratégico de **IA generativa (Claude - Anthropic)**, como ferramenta de apoio técnico.
 
 ### Como a IA foi utilizada
 
@@ -214,7 +214,6 @@ Este projeto foi desenvolvido com suporte estratégico de **IA generativa (Claud
 |---|---|
 | **Arquitetura** | Discussão e validação das decisões de design (camadas, padrões, SOLID) |
 | **Resolução de erros** | Diagnóstico de erros de compilação e incompatibilidades de versão (.NET 10, FluentValidation) |
-| **Boas práticas** | Orientação sobre Clean Code, padrões RESTful e convenções do ecossistema .NET |
 | **Documentação** | Estruturação dos comentários XML e do próprio README |
 
 ### O que foi feito pelo desenvolvedor
@@ -223,5 +222,3 @@ Este projeto foi desenvolvido com suporte estratégico de **IA generativa (Claud
 - Cada trecho de código foi lido, compreendido e adaptado ao contexto do projeto
 - A implementação foi executada manualmente, arquivo por arquivo
 - Bugs e incompatibilidades foram investigados e resolvidos ativamente
-
-> O uso de IA foi tratado como um **par de programação sênior** — uma ferramenta de apoio técnico, não um substituto ao raciocínio do desenvolvedor. Essa abordagem reflete o uso profissional moderno de ferramentas de IA no desenvolvimento de software.
