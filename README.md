@@ -1,25 +1,25 @@
-# 💰 CatchDebits — Gerenciamento Financeiro por Pessoa
+#  CatchDebits — Gerenciamento Financeiro por Pessoa
 
 Aplicação full-stack desenvolvida como desafio técnico, para gerenciamento de transações financeiras vinculadas a pessoas, com regras de negócio, validações e relatório de totais.
 
 ---
 
-## 📋 Requisitos do Desafio Implementados
+## Requisitos do Desafio Implementados
 
-### ✅ 1. Cadastro de Pessoas
+### 1. Cadastro de Pessoas
 - **Criar** nova pessoa (Nome + Idade)
 - **Listar** todas as pessoas cadastradas
 - **Deletar** pessoa pelo Id
 - **Cascade Delete**: ao deletar uma pessoa, **todas as suas transações são removidas automaticamente** (configurado via `DeleteBehavior.Cascade` no Entity Framework Core)
 
-### ✅ 2. Cadastro de Transações
+### 2. Cadastro de Transações
 - **Criar** transação vinculada a uma pessoa (Descrição, Valor, Tipo, PessoaId)
 - **Listar** todas as transações com o nome da pessoa vinculada
 - **Regra de Negócio Crítica**: pessoas com **menos de 18 anos** só podem registrar transações do tipo **Despesa**. Tentativas de registrar **Receita** para menores retornam HTTP 400 com mensagem explicativa
   - Validação aplicada no **back-end** (Controller) — fonte da verdade
   - Validação aplicada no **front-end** (UX) — desabilita a opção e exibe aviso visual
 
-### ✅ 3. Relatório de Totais
+### 3. Relatório de Totais
 - Lista todas as pessoas exibindo:
   - Total de Receitas
   - Total de Despesas  
@@ -27,7 +27,7 @@ Aplicação full-stack desenvolvida como desafio técnico, para gerenciamento de
 - Exibe o **Total Geral acumulado** de todas as pessoas no rodapé da tabela
 - Pessoas sem transações aparecem com saldo zerado
 
-### ✅ 4. Extras
+### 4. Extras
 - Código bem documentado com `<summary>` XML e comentários explicativos de lógica
 - Arquitetura em camadas (Controllers → Services → Repository/DbContext)
 - Princípios SOLID aplicados (SRP, DIP via interfaces)
@@ -35,7 +35,7 @@ Aplicação full-stack desenvolvida como desafio técnico, para gerenciamento de
 
 ---
 
-## 🏗️ Arquitetura do Projeto
+## Arquitetura do Projeto
 
 CatchDebits/
 ├── src/
@@ -56,7 +56,7 @@ CatchDebits/
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 | Camada | Tecnologia |
 |---|---|
@@ -70,7 +70,7 @@ CatchDebits/
 
 ---
 
-## ⚙️ Como Executar o Projeto
+## Como Executar o Projeto
 
 ### Pré-requisitos
 
@@ -109,7 +109,7 @@ npm run dev
 
 ---
 
-## 📡 Endpoints da API
+## Endpoints da API
 
 ### Pessoas
 
@@ -148,7 +148,7 @@ npm run dev
 
 ---
 
-## 🔒 Regras de Negócio
+## Regras de Negócio
 
 ### Cascade Delete
 Ao deletar uma pessoa via `DELETE /api/Pessoas/{id}`, todas as transações vinculadas são removidas automaticamente pelo banco de dados, sem necessidade de lógica adicional no código C#.
@@ -176,7 +176,7 @@ No front-end, a opção "Receita" é **desabilitada automaticamente** ao selecio
 
 ---
 
-## 🧱 Decisões de Arquitetura
+## Decisões de Arquitetura
 
 | Decisão | Justificativa |
 |---|---|
@@ -189,7 +189,7 @@ No front-end, a opção "Receita" é **desabilitada automaticamente** ao selecio
 
 ---
 
-## 📁 Estrutura do Banco de Dados
+## Estrutura do Banco de Dados
 
 Tabela: Pessoas
 ├── Id       INTEGER PRIMARY KEY AUTOINCREMENT
